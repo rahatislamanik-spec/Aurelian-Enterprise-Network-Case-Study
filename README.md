@@ -124,29 +124,16 @@ write memory                       ! Save config after each stable change
 
 ```
 Aurelian-Enterprise-Network-Case-Study/
-├── index.html                          ← Live case study (Volume 3)
-├── README.md                           ← This file
-├── Aurelian_Troubleshooting_Log.md     ← Full raw troubleshooting notes
+├── index.html                              ← Live interactive case study
+├── README.md                               ← This file
+├── Aurelian_Troubleshooting_Log.md         ← Full raw troubleshooting notes
+├── Aurelian Financial Group .pkt           ← Cisco Packet Tracer simulation file
 │
-├── assets/
-│   └── screenshots/
-│       ├── topology-final.png
-│       ├── dhcp-pools.png
-│       ├── router-subinterfaces.png
-│       ├── finance-trunk.png
-│       ├── finance-vlans.png
-│       └── finance-port-status.png
-│
-├── configs/
-│   ├── router-config.txt
-│   ├── core-switch-config.txt
-│   ├── sw-finance-config.txt
-│   ├── sw-hr-config.txt
-│   ├── sw-it-config.txt
-│   └── sw-mgmt-config.txt
-│
-└── packet-tracer/
-    └── Aurelian_Enterprise_Network.pkt
+└── Aurelian_Cleaned_GitHub_Assets/         ← Case study screenshot evidence
+    ├── aurelian_case_study_01.png
+    ├── aurelian_case_study_02.png
+    ├── aurelian_case_study_03.png
+    └── ... (20 screenshots total)
 ```
 
 ---
