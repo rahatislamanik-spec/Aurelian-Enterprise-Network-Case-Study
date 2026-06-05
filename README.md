@@ -18,6 +18,18 @@ Aurelian Financial Group is a fictional financial services firm modeled as a rea
 
 ---
 
+## The Problem
+
+Aurelian Financial Group — a financial services firm — operated on a flat, completely unsegmented network. Finance, HR, IT, and Management shared the same broadcast domain with no traffic isolation, no access controls between departments, and no structured routing. For a regulated financial environment, this represented both a security failure and a compliance risk.
+
+## The Solution
+
+A complete network redesign: 4-VLAN architecture (Finance, HR, IT, Management), router-on-a-stick inter-VLAN routing via 802.1Q subinterfaces, centralized DHCP relay across VLAN boundaries, ACL security policies blocking lateral movement between sensitive departments, and SSH hardening replacing open Telnet access.
+
+**8 real misconfigurations encountered, diagnosed, and resolved — every one documented in STAR format with the exact commands used.**
+
+---
+
 ## Network Summary
 
 | Detail | Value |
@@ -167,14 +179,14 @@ The interactive case study with animated sections, STAR-format incident cards, a
 
 ## About
 
-**Md Rahat Islam Anik** — IT Support Specialist  
-Cloud Computing & Network Administration · George Brown Polytechnic · May 2026 · GPA 3.55
+**Md Rahat Islam Anik**  
+Network & Systems Administrator · Cloud & Infrastructure Operations Specialist · Toronto, Canada
 
-Certifications: AZ-900 · MS-900 · Cisco Networking Essentials · Claude 101 · AI Fluency · AZ-104 (in progress) · SC-900 (in progress)
+Certifications: AZ-900 · MS-900 · Cisco Networking Essentials · AZ-104 (in progress) · SC-900 (in progress)
 
 - LinkedIn: [linkedin.com/in/rahatislamanik](https://linkedin.com/in/rahatislamanik)
 - GitHub: [github.com/rahatislamanik-spec](https://github.com/rahatislamanik-spec)
 
 ---
 
-*Aurelian Financial Group is a fictional firm created for portfolio demonstration purposes. All configurations are based on real Cisco IOS commands executed in Cisco Packet Tracer during a live build and troubleshooting session. May 2026.*
+*Aurelian Financial Group is a fictional firm created for portfolio demonstration purposes. All configurations are based on real Cisco IOS commands executed in Cisco Packet Tracer during a live build and troubleshooting session.*
