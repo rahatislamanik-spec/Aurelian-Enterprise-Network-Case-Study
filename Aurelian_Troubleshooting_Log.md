@@ -361,7 +361,7 @@ PC-MGMT-02: 192.168.40.12  GW: 192.168.40.1 ✅
 | 5 | DHCP APIPA on PC-HR-01 | PC-HR-01 | PC connected to Gi0/1 (trunk port), not VLAN 20 access port | Changed Gi0/1 to access VLAN 20 |
 | 6 | DHCP APIPA on PC-IT/MGMT | Multiple PCs | PCs on Gi ports (trunk mode), not correct VLAN access ports | Changed Gi0/1, Gi0/2 to correct access VLANs |
 | 7 | MGMT DHCP wrong pool / no gateway | PC-MGMT-01/02 | serverPool (192.168.40.0, no GW) overriding MGMT_POOL | Moved serverPool to 10.0.0.x subnet |
-| 8 | Router repeated reboots | Aurelian-RTR-01 | Power button accidentally clicked in Physical tab | Operator awareness — avoid Physical tab power button |
+| 8 | Management access unprotected | Router and switches | Telnet allowed and VTY lines lacked access restrictions | Enabled SSH-only access and restricted management to VLAN 40 |
 
 ---
 
@@ -416,11 +416,11 @@ switchport trunk native vlan 1
 
 ---
 
-## Pending (Next Session)
+## Follow-Up Opportunities
 
-- Inter-VLAN ping tests (static IPs on PCs)
-- Troubleshooting Scenario 2, 3, 4 (design + break + fix + document)
-- Case study HTML page with architecture diagram
+- Add exported final device configurations if needed for deeper review
+- Add HSRP, EtherChannel, and OSPF as future advanced scenarios
+- Add syslog/SNMP-style monitoring notes to extend the operations workflow
 
 ---
 

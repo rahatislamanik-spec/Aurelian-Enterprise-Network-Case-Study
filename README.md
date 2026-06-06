@@ -26,7 +26,7 @@ Aurelian Financial Group — a financial services firm — operated on a flat, c
 
 A complete network redesign: 4-VLAN architecture (Finance, HR, IT, Management), router-on-a-stick inter-VLAN routing via 802.1Q subinterfaces, centralized DHCP relay across VLAN boundaries, ACL security policies blocking lateral movement between sensitive departments, and SSH hardening replacing open Telnet access.
 
-**8 real misconfigurations encountered, diagnosed, and resolved — every one documented in STAR format with the exact commands used.**
+**8 lab misconfigurations encountered, diagnosed, and resolved — every one documented in STAR format with the exact commands used.**
 
 ---
 
@@ -139,7 +139,7 @@ Aurelian-Enterprise-Network-Case-Study/
 ├── index.html                              ← Live interactive case study
 ├── README.md                               ← This file
 ├── Aurelian_Troubleshooting_Log.md         ← Full raw troubleshooting notes
-├── Aurelian Financial Group .pkt           ← Cisco Packet Tracer simulation file
+├── Aurelian_Financial_Group.pkt            ← Cisco Packet Tracer simulation file
 │
 └── Aurelian_Cleaned_GitHub_Assets/         ← Case study screenshot evidence
     ├── aurelian_case_study_01.png
@@ -166,6 +166,17 @@ Aurelian-Enterprise-Network-Case-Study/
 - Layered approach: Physical → L2 trunk → L3 interface → DHCP server
 - Physical cable verification before any configuration change
 - Every issue documented in STAR format: Situation, Task, Action, Result
+
+---
+
+## Evidence Scope
+
+| This project demonstrates | This project does not claim |
+|---|---|
+| Cisco Packet Tracer VLAN design and troubleshooting | Production network deployment |
+| Router-on-a-stick, DHCP relay, trunking, STP, and ACL logic | Live enterprise change control |
+| Screenshot-backed lab evidence and command output | Physical Cisco hardware operations |
+| Practical support troubleshooting workflow | Regulated production compliance validation |
 
 ---
 
