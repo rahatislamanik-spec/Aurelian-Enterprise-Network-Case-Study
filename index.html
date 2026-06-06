@@ -235,6 +235,8 @@ footer{padding:4rem 0;border-top:1px solid var(--border)}
 .ev-card .terminal{border-radius:0;border:none;border-top:1px solid rgba(77,201,138,.15);box-shadow:none}
 .ev-card .terminal pre{font-size:.73rem;padding:1rem 1.25rem}
 .ev-cap{padding:.75rem 1.25rem;border-top:1px solid var(--border2);font-size:.78rem;color:var(--muted)}
+.screenshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.shot img{aspect-ratio:16/10;object-fit:cover;background:var(--s2)}
 
 /* ─── SCROLL REVEAL ─── */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
@@ -243,6 +245,7 @@ footer{padding:4rem 0;border-top:1px solid var(--border)}
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
   .vlan-grid,.decision-grid,.g3,.workflow-grid{grid-template-columns:1fr 1fr}
+  .screenshot-grid{grid-template-columns:1fr 1fr}
   .stats-row{grid-template-columns:repeat(3,1fr)}
   .res-grid{grid-template-columns:1fr 1fr}
   .lessons,.g2,.hardening-grid,.roadmap-grid,.acl-grid{grid-template-columns:1fr}
@@ -250,6 +253,7 @@ footer{padding:4rem 0;border-top:1px solid var(--border)}
 }
 @media(max-width:600px){
   .vlan-grid,.decision-grid,.workflow-grid,.val-grid,.g4{grid-template-columns:1fr}
+  .screenshot-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
   h1{font-size:2.6rem}
@@ -934,7 +938,7 @@ copy running-config startup-config</pre>
 <div class="w">
   <div class="kicker">Operational Hardening</div>
   <h2>Port security, SSH, and<br>management-plane restrictions.</h2>
-  <p class="lead">Beyond connectivity and ACLs, a production-ready environment requires hardening at the access layer and management plane. These configurations demonstrate Layer 2 security awareness and controlled administrative access.</p>
+  <p class="lead">Beyond connectivity and ACLs, a production-style design requires hardening at the access layer and management plane. These configurations demonstrate Layer 2 security awareness and controlled administrative access.</p>
 
   <div class="hardening-grid rv">
     <div class="card">
@@ -947,7 +951,7 @@ copy running-config startup-config</pre>
         <span class="ca">crypto key generate rsa modulus 2048</span><br>
         <span class="ca">ip ssh version 2</span><br>
         <span class="cc">!</span><br>
-        <span class="cp">username admin privilege 15 secret </span><span class="ct">StrongPass!</span><br>
+        <span class="cp">username admin privilege 15 secret </span><span class="ct">&lt;set-unique-secret&gt;</span><br>
         <span class="cc">!</span><br>
         <span class="cp">ip access-list standard </span><span class="ct">MGMT_ACCESS</span><br>
         <span class="ca"> permit </span><span class="ct">192.168.40.0 0.0.0.255</span><br>
@@ -980,18 +984,14 @@ copy running-config startup-config</pre>
 
   <div class="card rv" style="margin-top:1.25rem">
     <h3>Configuration Backup and Rollback Discipline</h3>
-    <p style="color:var(--muted);font-size:.9rem;margin:.5rem 0 1rem">Every stable config was saved and the <code class="mono">/configs</code> repository folder makes each device's final state reviewable, auditable, and reproducible.</p>
-    <div class="repo-tree">configs/<br>
-├── router-config.txt<br>
-├── core-switch-config.txt<br>
-├── sw-finance-config.txt<br>
-├── sw-hr-config.txt<br>
-├── sw-it-config.txt<br>
-└── sw-mgmt-config.txt<br>
-<br>
-Aurelian_Troubleshooting_Log.md<br>
-packet-tracer/<br>
-└── Aurelian_Enterprise_Network.pkt</div>
+    <p style="color:var(--muted);font-size:.9rem;margin:.5rem 0 1rem">Every stable configuration state was saved inside Packet Tracer, and the troubleshooting log records the commands and validation checkpoints that made the final state reproducible.</p>
+    <div class="repo-tree">Aurelian-Enterprise-Network-Case-Study/<br>
+├── index.html<br>
+├── README.md<br>
+├── Aurelian_Troubleshooting_Log.md<br>
+├── Aurelian_Financial_Group.pkt<br>
+└── Aurelian_Cleaned_GitHub_Assets/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── aurelian_case_study_01-20.png</div>
   </div>
 
   <div class="note-box rv">
@@ -1132,6 +1132,31 @@ round-trip min/avg/max = 0/0/1 ms
     </div>
 
   </div>
+
+  <h3 style="margin-top:2.5rem">Screenshot Evidence</h3>
+  <p class="lead" style="margin-bottom:0">The gallery below preserves the visual Packet Tracer evidence for topology, configuration, troubleshooting, and validation steps used in the case study.</p>
+  <div class="screenshot-grid rv">
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_01.png" alt="Packet Tracer screenshot 01"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 01</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_02.png" alt="Packet Tracer screenshot 02"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 02</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_03.png" alt="Packet Tracer screenshot 03"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 03</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_04.png" alt="Packet Tracer screenshot 04"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 04</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_05.png" alt="Packet Tracer screenshot 05"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 05</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_06.png" alt="Packet Tracer screenshot 06"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 06</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_07.png" alt="Packet Tracer screenshot 07"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 07</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_08.png" alt="Packet Tracer screenshot 08"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 08</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_09.png" alt="Packet Tracer screenshot 09"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 09</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_10.png" alt="Packet Tracer screenshot 10"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 10</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_11.png" alt="Packet Tracer screenshot 11"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 11</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_12.png" alt="Packet Tracer screenshot 12"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 12</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_13.png" alt="Packet Tracer screenshot 13"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 13</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_14.png" alt="Packet Tracer screenshot 14"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 14</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_15.png" alt="Packet Tracer screenshot 15"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 15</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_16.png" alt="Packet Tracer screenshot 16"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 16</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_17.png" alt="Packet Tracer screenshot 17"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 17</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_18.png" alt="Packet Tracer screenshot 18"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 18</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_19.png" alt="Packet Tracer screenshot 19"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 19</div></div>
+    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_20.png" alt="Packet Tracer screenshot 20"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 20</div></div>
+  </div>
 </div>
 </section>
 
@@ -1215,23 +1240,20 @@ round-trip min/avg/max = 0/0/1 ms
     <div>
       <div class="foot-name">Md Rahat Islam Anik</div>
       <div class="foot-sub">
-        IT Support Specialist · Cloud Computing & Network Administration<br>
-        George Brown Polytechnic · May 2026 · GPA 3.55
+        Network & Systems Administrator · Cloud & Infrastructure Operations Specialist<br>
+        Toronto, Canada
       </div>
       <div class="certs">
         <span class="cert">AZ-900</span>
         <span class="cert">MS-900</span>
         <span class="cert">Cisco Networking Essentials</span>
-        <span class="cert">Claude 101</span>
-        <span class="cert">AI Fluency</span>
         <span class="cert">AZ-104 in progress</span>
         <span class="cert">SC-900 in progress</span>
       </div>
       <div class="foot-links">
-        <a href="https://linkedin.com/in/rahatislamanik" target="_blank" class="foot-link">LinkedIn</a>
-        <a href="https://github.com/rahatislamanik-spec" target="_blank" class="foot-link">GitHub</a>
+        <a href="https://linkedin.com/in/rahatislamanik" target="_blank" rel="noopener noreferrer" class="foot-link">LinkedIn</a>
+        <a href="https://github.com/rahatislamanik-spec" target="_blank" rel="noopener noreferrer" class="foot-link">GitHub</a>
         <a href="Aurelian_Troubleshooting_Log.md" class="foot-link">Troubleshooting Log ↓</a>
-        <a href="configs/router-config.txt" class="foot-link">Router Config ↓</a>
       </div>
     </div>
     <div style="text-align:right">
