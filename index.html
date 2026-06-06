@@ -235,6 +235,20 @@ footer{padding:4rem 0;border-top:1px solid var(--border)}
 .ev-card .terminal{border-radius:0;border:none;border-top:1px solid rgba(77,201,138,.15);box-shadow:none}
 .ev-card .terminal pre{font-size:.73rem;padding:1rem 1.25rem}
 .ev-cap{padding:.75rem 1.25rem;border-top:1px solid var(--border2);font-size:.78rem;color:var(--muted)}
+.evidence-story{display:grid;grid-template-columns:1.2fr .8fr;gap:1.25rem;margin-top:2rem}
+.evidence-feature{background:var(--s1);border:1px solid var(--border2);border-radius:18px;overflow:hidden}
+.evidence-feature img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--s2);cursor:zoom-in}
+.evidence-feature-body{padding:1.25rem 1.5rem;border-top:1px solid var(--border2)}
+.evidence-feature-body h3{font-size:1rem;margin-bottom:.4rem}
+.evidence-feature-body p{font-size:.88rem;color:var(--muted);line-height:1.7}
+.evidence-notes{display:grid;gap:1rem}
+.evidence-note{background:var(--s1);border:1px solid var(--border2);border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:1.1rem 1.25rem}
+.evidence-note strong{display:block;color:var(--gold2);font-size:.82rem;margin-bottom:.35rem;font-family:"IBM Plex Mono",monospace}
+.evidence-note span{display:block;color:var(--muted);font-size:.86rem;line-height:1.65}
+.gallery-band{margin-top:2.25rem}
+.gallery-title{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.gallery-title h3{margin:0;font-size:1rem}
+.gallery-title span{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--muted)}
 .screenshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
 .shot img{aspect-ratio:16/10;object-fit:cover;background:var(--s2)}
 
@@ -245,6 +259,7 @@ footer{padding:4rem 0;border-top:1px solid var(--border)}
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
   .vlan-grid,.decision-grid,.g3,.workflow-grid{grid-template-columns:1fr 1fr}
+  .evidence-story{grid-template-columns:1fr}
   .screenshot-grid{grid-template-columns:1fr 1fr}
   .stats-row{grid-template-columns:repeat(3,1fr)}
   .res-grid{grid-template-columns:1fr 1fr}
@@ -1133,29 +1148,66 @@ round-trip min/avg/max = 0/0/1 ms
 
   </div>
 
-  <h3 style="margin-top:2.5rem">Screenshot Evidence</h3>
-  <p class="lead" style="margin-bottom:0">The gallery below preserves the visual Packet Tracer evidence for topology, configuration, troubleshooting, and validation steps used in the case study.</p>
-  <div class="screenshot-grid rv">
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_01.png" alt="Packet Tracer screenshot 01"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 01</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_02.png" alt="Packet Tracer screenshot 02"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 02</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_03.png" alt="Packet Tracer screenshot 03"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 03</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_04.png" alt="Packet Tracer screenshot 04"><div class="shot-cap"><span class="dot dot-gold"></span>Evidence 04</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_05.png" alt="Packet Tracer screenshot 05"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 05</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_06.png" alt="Packet Tracer screenshot 06"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 06</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_07.png" alt="Packet Tracer screenshot 07"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 07</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_08.png" alt="Packet Tracer screenshot 08"><div class="shot-cap"><span class="dot dot-b"></span>Evidence 08</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_09.png" alt="Packet Tracer screenshot 09"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 09</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_10.png" alt="Packet Tracer screenshot 10"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 10</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_11.png" alt="Packet Tracer screenshot 11"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 11</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_12.png" alt="Packet Tracer screenshot 12"><div class="shot-cap"><span class="dot dot-g"></span>Evidence 12</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_13.png" alt="Packet Tracer screenshot 13"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 13</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_14.png" alt="Packet Tracer screenshot 14"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 14</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_15.png" alt="Packet Tracer screenshot 15"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 15</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_16.png" alt="Packet Tracer screenshot 16"><div class="shot-cap"><span class="dot dot-a"></span>Evidence 16</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_17.png" alt="Packet Tracer screenshot 17"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 17</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_18.png" alt="Packet Tracer screenshot 18"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 18</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_19.png" alt="Packet Tracer screenshot 19"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 19</div></div>
-    <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_20.png" alt="Packet Tracer screenshot 20"><div class="shot-cap"><span class="dot dot-r"></span>Evidence 20</div></div>
+  <div class="evidence-story rv">
+    <div class="evidence-feature shot">
+      <img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_10.png" alt="Completed Packet Tracer topology with router, core switch, access switches, clients, and DHCP server">
+      <div class="evidence-feature-body">
+        <h3>Completed Segmented Topology</h3>
+        <p>The final Packet Tracer state shows router-on-a-stick inter-VLAN routing, a 3560 core switch, four departmental access switches, eight clients, and the DHCP server in the management VLAN.</p>
+      </div>
+    </div>
+    <div class="evidence-notes">
+      <div class="evidence-note">
+        <strong>Before</strong>
+        <span>The build began as an unconnected topology with department hosts, access switches, a core switch, and router staged for segmentation.</span>
+      </div>
+      <div class="evidence-note">
+        <strong>During</strong>
+        <span>CLI screenshots preserve the real troubleshooting path: trunk state, VLAN membership, DHCP failures, STP messages, and interface validation.</span>
+      </div>
+      <div class="evidence-note">
+        <strong>After</strong>
+        <span>The final screenshots support the written STAR cases by showing the corrected topology and command evidence used to close the lab.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-band rv">
+    <div class="gallery-title"><h3>Topology Build Evidence</h3><span>screenshots 01-04</span></div>
+    <div class="screenshot-grid">
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_01.png" alt="Initial Packet Tracer topology before cabling"><div class="shot-cap"><span class="dot dot-gold"></span>Initial topology staging</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_02.png" alt="Packet Tracer topology build screenshot 02"><div class="shot-cap"><span class="dot dot-gold"></span>Device layout progress</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_03.png" alt="Packet Tracer topology build screenshot 03"><div class="shot-cap"><span class="dot dot-gold"></span>Access layer staging</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_04.png" alt="Packet Tracer topology build screenshot 04"><div class="shot-cap"><span class="dot dot-gold"></span>Segmented design setup</div></div>
+    </div>
+  </div>
+
+  <div class="gallery-band rv">
+    <div class="gallery-title"><h3>Connectivity and Troubleshooting Evidence</h3><span>screenshots 05-12</span></div>
+    <div class="screenshot-grid">
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_05.png" alt="Packet Tracer troubleshooting screenshot 05"><div class="shot-cap"><span class="dot dot-b"></span>Link validation</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_06.png" alt="Packet Tracer troubleshooting screenshot 06"><div class="shot-cap"><span class="dot dot-b"></span>VLAN verification</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_07.png" alt="Packet Tracer troubleshooting screenshot 07"><div class="shot-cap"><span class="dot dot-b"></span>Port correction</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_08.png" alt="Packet Tracer troubleshooting screenshot 08"><div class="shot-cap"><span class="dot dot-b"></span>DHCP relay check</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_09.png" alt="Packet Tracer troubleshooting screenshot 09"><div class="shot-cap"><span class="dot dot-g"></span>Client lease validation</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_10.png" alt="Completed Packet Tracer topology screenshot 10"><div class="shot-cap"><span class="dot dot-g"></span>Completed topology</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_11.png" alt="Packet Tracer validation screenshot 11"><div class="shot-cap"><span class="dot dot-g"></span>Command output evidence</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_12.png" alt="Packet Tracer validation screenshot 12"><div class="shot-cap"><span class="dot dot-g"></span>Routing validation</div></div>
+    </div>
+  </div>
+
+  <div class="gallery-band rv">
+    <div class="gallery-title"><h3>CLI and Final Validation Evidence</h3><span>screenshots 13-20</span></div>
+    <div class="screenshot-grid">
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_13.png" alt="Packet Tracer CLI validation screenshot 13"><div class="shot-cap"><span class="dot dot-a"></span>Interface status</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_14.png" alt="Packet Tracer CLI validation screenshot 14"><div class="shot-cap"><span class="dot dot-a"></span>Trunk verification</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_15.png" alt="Packet Tracer CLI validation screenshot 15"><div class="shot-cap"><span class="dot dot-a"></span>VLAN evidence</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_16.png" alt="Packet Tracer CLI validation screenshot 16"><div class="shot-cap"><span class="dot dot-a"></span>Gateway testing</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_17.png" alt="Packet Tracer CLI validation screenshot 17"><div class="shot-cap"><span class="dot dot-r"></span>STP/CDP evidence</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_18.png" alt="Packet Tracer CLI screenshot showing switch command line output"><div class="shot-cap"><span class="dot dot-r"></span>Switch CLI output</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_19.png" alt="Packet Tracer final validation screenshot 19"><div class="shot-cap"><span class="dot dot-r"></span>Final validation</div></div>
+      <div class="shot"><img src="Aurelian_Cleaned_GitHub_Assets/aurelian_case_study_20.png" alt="Packet Tracer final validation screenshot 20"><div class="shot-cap"><span class="dot dot-r"></span>Final evidence capture</div></div>
+    </div>
   </div>
 </div>
 </section>
