@@ -1,0 +1,29 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 2960-24TT Access Switch
+! Device: SW-IT
+! Role: Access layer switch for VLAN 30 (IT Department)
+! Note: Native VLAN mismatch encountered during build — resolved
+!       via CDP neighbor detail output analysis
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname SW-IT
+
+vlan 30
+ name IT
+
+! --- Uplink to Core Switch (Trunk) ---
+interface FastEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 30
+ switchport trunk native vlan 1
+ no shutdown
+
+! --- Access Ports — IT Workstations ---
+interface range FastEthernet0/2 - 24
+ switchport mode access
+ switchport access vlan 30
+ spanning-tree portfast
+ no shutdown
+
+end
