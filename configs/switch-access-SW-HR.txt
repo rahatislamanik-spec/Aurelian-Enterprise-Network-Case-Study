@@ -1,0 +1,26 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 2960-24TT Access Switch
+! Device: SW-HR
+! Role: Access layer switch for VLAN 20 (Human Resources)
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname SW-HR
+
+vlan 20
+ name HR
+
+! --- Uplink to Core Switch (Trunk) ---
+interface FastEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 20
+ no shutdown
+
+! --- Access Ports — HR Workstations ---
+interface range FastEthernet0/2 - 24
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+ no shutdown
+
+end
