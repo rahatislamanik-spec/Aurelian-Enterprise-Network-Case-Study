@@ -1,0 +1,62 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 3560-24PS Core Switch
+! Device: SW-CORE
+! Role: Core Layer 3 Switch, VLAN Trunk Hub
+! Note: 3560 requires explicit 'switchport trunk encapsulation dot1q'
+!       before 'switchport mode trunk' — silent failure without it
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname SW-CORE
+
+! --- VLAN Database ---
+vlan 10
+ name FINANCE
+vlan 20
+ name HR
+vlan 30
+ name IT
+vlan 40
+ name MANAGEMENT
+
+! --- Uplink to Router (Trunk) ---
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk native vlan 1
+ switchport trunk allowed vlan 10,20,30,40
+ no shutdown
+
+! --- Downlink to SW-FINANCE (Trunk) ---
+interface FastEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10
+ no shutdown
+
+! --- Downlink to SW-HR (Trunk) ---
+interface FastEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 20
+ no shutdown
+
+! --- Downlink to SW-IT (Trunk) ---
+interface FastEthernet0/4
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 30
+ no shutdown
+
+! --- Downlink to SW-MGMT (Trunk) ---
+interface FastEthernet0/5
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 40
+ no shutdown
+
+! --- Spanning Tree ---
+spanning-tree mode pvst
+spanning-tree vlan 10,20,30,40 priority 4096
+
+end
