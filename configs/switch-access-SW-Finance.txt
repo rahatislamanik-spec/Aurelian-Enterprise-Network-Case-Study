@@ -1,0 +1,26 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 2960-24TT Access Switch
+! Device: SW-FINANCE
+! Role: Access layer switch for VLAN 10 (Finance)
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname SW-FINANCE
+
+vlan 10
+ name FINANCE
+
+! --- Uplink to Core Switch (Trunk) ---
+interface FastEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 10
+ no shutdown
+
+! --- Access Ports — Finance Workstations ---
+interface range FastEthernet0/2 - 24
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+ no shutdown
+
+end
