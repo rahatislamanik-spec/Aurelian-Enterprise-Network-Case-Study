@@ -1,0 +1,77 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 2911 Router Configuration
+! Device: Aurelian-R1
+! Role: Inter-VLAN Routing (Router-on-a-Stick), DHCP Relay
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname Aurelian-R1
+
+! --- Security ---
+enable secret aurelian2026
+no ip domain-lookup
+ip domain-name aurelian.local
+
+! --- SSH Hardening ---
+crypto key generate rsa modulus 2048
+ip ssh version 2
+
+username admin privilege 15 secret admin2026
+
+line vty 0 4
+ login local
+ transport input ssh
+ access-class MGMT_ACCESS in
+ exec-timeout 10 0
+
+line con 0
+ login local
+ exec-timeout 5 0
+
+! --- Trunk Interface to Core Switch ---
+interface GigabitEthernet0/0
+ no shutdown
+ no ip address
+
+! --- VLAN 10 Subinterface — Finance ---
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip helper-address 192.168.40.2
+ ip access-group BLOCK_HR_TO_FINANCE in
+ no shutdown
+
+! --- VLAN 20 Subinterface — HR ---
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 192.168.40.2
+ no shutdown
+
+! --- VLAN 30 Subinterface — IT ---
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+ ip helper-address 192.168.40.2
+ no shutdown
+
+! --- VLAN 40 Subinterface — Management / DHCP Server ---
+interface GigabitEthernet0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
+ no shutdown
+
+! --- ACL: Block HR lateral movement to Finance ---
+ip access-list extended BLOCK_HR_TO_FINANCE
+ deny   ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+ permit ip any any
+
+! --- Management ACL ---
+ip access-list standard MGMT_ACCESS
+ permit 192.168.40.0 0.0.0.255
+ deny   any
+
+! --- Enable Routing ---
+ip routing
+
+end
