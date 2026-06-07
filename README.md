@@ -45,6 +45,75 @@ A complete network redesign: 4-VLAN architecture (Finance, HR, IT, Management), 
 
 ---
 
+## Network Topology
+
+```mermaid
+flowchart TD
+    subgraph Router["🔀 Aurelian-R1 — Cisco 2911"]
+        R1["Router-on-a-Stick\nGi0/0 Trunk\nInter-VLAN Routing"]
+    end
+
+    subgraph Core["🔧 SW-CORE — Cisco 3560-24PS"]
+        CORE["Core Switch\n802.1Q Trunk Hub\nSTP Root Bridge"]
+    end
+
+    subgraph VLAN10["💰 VLAN 10 — Finance (192.168.10.0/24)"]
+        SW_FIN["SW-FINANCE\nCisco 2960"]
+        PC_FIN["Finance Workstations"]
+    end
+
+    subgraph VLAN20["👥 VLAN 20 — HR (192.168.20.0/24)"]
+        SW_HR["SW-HR\nCisco 2960"]
+        PC_HR["HR Workstations"]
+    end
+
+    subgraph VLAN30["💻 VLAN 30 — IT (192.168.30.0/24)"]
+        SW_IT["SW-IT\nCisco 2960"]
+        PC_IT["IT Workstations"]
+    end
+
+    subgraph VLAN40["⚙️ VLAN 40 — Management (192.168.40.0/24)"]
+        SW_MGMT["SW-MGMT\nCisco 2960"]
+        DHCP["DHCP Server\n192.168.40.2"]
+        PC_MGMT["Management Workstations"]
+    end
+
+    R1 -->|"802.1Q Trunk"| CORE
+    CORE -->|"VLAN 10"| SW_FIN
+    CORE -->|"VLAN 20"| SW_HR
+    CORE -->|"VLAN 30"| SW_IT
+    CORE -->|"VLAN 40"| SW_MGMT
+    SW_FIN --> PC_FIN
+    SW_HR --> PC_HR
+    SW_IT --> PC_IT
+    SW_MGMT --> DHCP
+    SW_MGMT --> PC_MGMT
+
+    DHCP -.->|"ip helper-address relay"| PC_FIN
+    DHCP -.->|"ip helper-address relay"| PC_HR
+    DHCP -.->|"ip helper-address relay"| PC_IT
+
+    classDef router fill:#E3F2FD,stroke:#1976D2,stroke-width:2px,color:#000
+    classDef core fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#000
+    classDef finance fill:#E8F5E9,stroke:#388E3C,stroke-width:2px,color:#000
+    classDef hr fill:#FFF3E0,stroke:#F57C00,stroke-width:2px,color:#000
+    classDef it fill:#E1F5FE,stroke:#0288D1,stroke-width:2px,color:#000
+    classDef mgmt fill:#FCE4EC,stroke:#C2185B,stroke-width:2px,color:#000
+
+    class R1 router
+    class CORE core
+    class SW_FIN,PC_FIN finance
+    class SW_HR,PC_HR hr
+    class SW_IT,PC_IT it
+    class SW_MGMT,DHCP,PC_MGMT mgmt
+```
+
+> DHCP relay (dashed lines) — centralized server in VLAN 40 serves all VLANs via `ip helper-address`.
+> ACL blocks HR (VLAN 20) from accessing Finance (VLAN 10) — applied inbound on router subinterface.
+> See [docs/network-addressing-table.md](docs/network-addressing-table.md) for full IP addressing reference.
+
+---
+
 ## VLAN Design
 
 | VLAN | Department | Subnet | Gateway | Pool |
@@ -141,12 +210,38 @@ Aurelian-Enterprise-Network-Case-Study/
 ├── Aurelian_Troubleshooting_Log.md         ← Full raw troubleshooting notes
 ├── Aurelian_Financial_Group.pkt            ← Cisco Packet Tracer simulation file
 │
-└── Aurelian_Cleaned_GitHub_Assets/         ← Case study screenshot evidence
+├── configs/                                ← IOS device configurations
+│   ├── router-aurelian-R1.txt             ← Cisco 2911 full router config
+│   ├── switch-core-3560.txt               ← 3560 core switch config
+│   ├── switch-access-SW-Finance.txt       ← VLAN 10 access switch
+│   ├── switch-access-SW-HR.txt            ← VLAN 20 access switch
+│   ├── switch-access-SW-IT.txt            ← VLAN 30 access switch
+│   └── switch-access-SW-MGMT.txt          ← VLAN 40 access switch
+│
+├── docs/
+│   └── network-addressing-table.md        ← Full IP addressing reference
+│
+└── Aurelian_Cleaned_GitHub_Assets/        ← Case study screenshot evidence
     ├── aurelian_case_study_01.png
     ├── aurelian_case_study_02.png
     ├── aurelian_case_study_03.png
     └── ... (20 screenshots total)
 ```
+
+---
+
+## Configuration Files
+
+All device configurations are available in the [`configs/`](configs/) folder — router and switch IOS configs extracted from the Packet Tracer simulation, including the exact commands used to resolve each issue.
+
+| File | Device | Key Config |
+|---|---|---|
+| [router-aurelian-R1.txt](configs/router-aurelian-R1.txt) | Cisco 2911 | Subinterfaces, DHCP relay, ACLs, SSH hardening |
+| [switch-core-3560.txt](configs/switch-core-3560.txt) | Cisco 3560 | Trunk encapsulation, VLAN trunk hub |
+| [switch-access-SW-Finance.txt](configs/switch-access-SW-Finance.txt) | Cisco 2960 | VLAN 10 access ports |
+| [switch-access-SW-HR.txt](configs/switch-access-SW-HR.txt) | Cisco 2960 | VLAN 20 access ports |
+| [switch-access-SW-IT.txt](configs/switch-access-SW-IT.txt) | Cisco 2960 | VLAN 30, native VLAN fix |
+| [switch-access-SW-MGMT.txt](configs/switch-access-SW-MGMT.txt) | Cisco 2960 | VLAN 40, trunk fix, DHCP server port |
 
 ---
 
