@@ -1,0 +1,37 @@
+! ============================================================
+! Aurelian Financial Group — Cisco 2960-24TT Access Switch
+! Device: SW-MGMT
+! Role: Access layer for VLAN 40 (Management + DHCP Server)
+! Note: Uplink was initially misconfigured as access port —
+!       triggered CDP native VLAN mismatch and STP inconsistency
+!       Resolved by reconfiguring as trunk
+! Simulator: Cisco Packet Tracer 8.x
+! ============================================================
+
+hostname SW-MGMT
+
+vlan 40
+ name MANAGEMENT
+
+! --- Uplink to Core Switch (Trunk) ---
+! Critical: must be trunk, not access — original misconfiguration
+interface FastEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 40
+ no shutdown
+
+! --- DHCP Server Port ---
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 40
+ spanning-tree portfast
+ no shutdown
+
+! --- Access Ports — Management Workstations ---
+interface range FastEthernet0/3 - 24
+ switchport mode access
+ switchport access vlan 40
+ spanning-tree portfast
+ no shutdown
+
+end
