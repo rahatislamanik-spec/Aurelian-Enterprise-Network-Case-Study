@@ -1,4 +1,5 @@
 # Aurelian Financial Group — Enterprise Network Case Study
+> **Status:** Portfolio Complete — v1.0
 
 > **Cisco Packet Tracer · VLAN Segmentation · Router-on-a-Stick · DHCP Relay · Tier 2/3 Troubleshooting**
 
